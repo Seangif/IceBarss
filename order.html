@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Metadata -->
+    <meta charset="UTF-8"> <!-- Declares the character set for the webpage, ensuring proper rendering of text -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the webpage responsive by setting the width to the device's screen size -->
+    <title>Order | IceBars</title> <!-- The title of the webpage that appears on the browser tab -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"> <!-- Imports the 'Poppins' font from Google Fonts for a modern and clean look -->
+
+    <style>
+        /* General Styles */
+        * {
+            margin: 0; /* Removes default margin from all elements */
+            padding: 0; /* Removes default padding from all elements */
+            box-sizing: border-box; /* Ensures padding and borders are included within the element's dimensions */
+            font-family: 'Poppins', sans-serif; /* Applies the 'Poppins' font to all elements */
+        }
+
+        body {
+            /* Styles for the body of the webpage */
+            background: #f9f9f9; /* Sets a light gray background color for a clean look */
+            color: #333; /* Sets the text color to dark gray for readability */
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex; /* Aligns the navbar content (logo and links) horizontally */
+            justify-content: space-between; /* Places the logo on the left and links on the right */
+            align-items: center; /* Vertically aligns navbar items */
+            padding: 20px 40px; /* Adds padding inside the navbar for spacing */
+            background: #fff; /* Sets a white background color for the navbar */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow below the navbar for depth */
+            position: sticky; /* Ensures the navbar stays fixed at the top of the page while scrolling */
+            top: 0; /* Keeps the navbar at the very top of the viewport */
+        }
+
+        .navbar a {
+            text-decoration: none; /* Removes the underline from links */
+            color: #333; /* Sets the text color to dark gray */
+            font-size: 16px; /* Sets a readable font size for the links */
+            font-weight: bold; /* Makes the text bold */
+            margin: 0 10px; /* Adds space between the links */
+        }
+
+        /* Page Title Styles */
+        .page-title {
+            text-align: center; /* Centers the content inside the title section */
+            padding: 20px 0; /* Adds vertical padding inside the title section */
+            background: #fff; /* Sets a white background for contrast */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow below the section */
+        }
+
+        /* Product Grid Styles */
+        .grid {
+            display: grid; /* Enables a grid layout for the product cards */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Creates responsive columns that adjust based on screen size, with a minimum size of 300px */
+            gap: 20px; /* Adds spacing between grid items */
+            max-width: 1200px; /* Sets a maximum width for the grid */
+            margin: 40px auto; /* Centers the grid on the page */
+            padding: 0 20px; /* Adds horizontal padding around the grid */
+        }
+
+        /* Card Styles */
+        .card {
+            background: #fff; /* Sets a white background for the card */
+            border-radius: 10px; /* Adds rounded corners to the card */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the card */
+            text-align: center; /* Centers the content inside the card */
+            overflow: hidden; /* Ensures that content stays within the card's boundaries */
+            padding: 20px; /* Adds padding inside the card for spacing */
+        }
+
+        .card img {
+            width: 100%; /* Makes the image stretch to the full width of the card */
+            height: 200px; /* Sets a fixed height for the image */
+            object-fit: cover; /* Ensures the image scales properly without distortion */
+            border-radius: 10px; /* Matches the rounded corners of the card */
+        }
+
+        .card h3 {
+            font-size: 18px; /* Sets the font size for the flavor name */
+            margin: 10px 0; /* Adds spacing above and below the flavor name */
+        }
+
+        .card p {
+            color: #007bff; /* Sets the price text color to blue */
+            font-weight: bold; /* Makes the price text bold */
+        }
+
+        .card button {
+            /* Styles for the "Order Now" button */
+            background: #007bff; /* Sets the button background to blue */
+            color: white; /* Sets the text color to white for contrast */
+            padding: 10px 20px; /* Adds padding inside the button for better size */
+            border: none; /* Removes the default border */
+            border-radius: 5px; /* Adds rounded corners to the button */
+            cursor: pointer; /* Changes the cursor to a pointer to indicate the button is clickable */
+            margin-top: 10px; /* Adds spacing above the button */
+        }
+
+        .card button:hover {
+            background: #0056b3; /* Darkens the button background color when hovered */
+        }
+
+        /* Popup Styles */
+        .popup {
+            position: fixed; /* Keeps the popup fixed in the same position */
+            top: 10px; /* Positions the popup near the top of the page */
+            left: 50%; /* Centers the popup horizontally */
+            transform: translateX(-50%); /* Adjusts the popup's position to be perfectly centered */
+            background: #4caf50; /* Sets the background color to green for success */
+            color: white; /* Sets the text color to white for contrast */
+            padding: 10px 20px; /* Adds padding inside the popup for spacing */
+            border-radius: 5px; /* Adds rounded corners to the popup */
+            display: none; /* Hides the popup by default */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <a href="#" class="logo">IceBars</a> <!-- The logo of the website -->
+        <nav>
+            <a href="index.html">Home</a> <!-- Link to the homepage -->
+            <a href="index.html#story">About Us</a> <!-- Link to the flavors section -->
+            <a href="signup.html">LogOut</a> <!-- Link to the logout or signup page -->
+        </nav>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+        <h1>Order Your Favorite Ice Cream</h1>
+        <p>Click "Order Now" and place your order!</p> <!-- Subheading for instructions -->
+    </section>
+
+    <!-- Popup for Order Confirmation -->
+    <div id="popup" class="popup">Thank you for your purchase!</div> <!-- Popup element that displays a confirmation message -->
+
+    <!-- Product Grid -->
+    <section class="grid">
+        <!-- Card for Swedish Munchies -->
+        <div class="card">
+            <img src="Ice1.webp" alt="Swedish Munchies"> <!-- Image of the flavor -->
+            <h3>Swedish Munchies</h3> <!-- Name of the flavor -->
+            <p>Price: ₱60</p> <!-- Price of the flavor -->
+            <button onclick="showOrderForm('Swedish Munchies')">Order Now</button> <!-- Button to order, calls a function with the flavor name -->
+        </div>
+        <div class="card">
+            <img src="Ice2.webp" alt="Mint Chokladchip">
+            <h3>Mint Chokladchip</h3>
+            <p>Price:  ₱60</p>
+            <button onclick="showOrderForm('Mint Chokladchip')">Order Now</button>
+        </div>
+        <div class="card">
+            <img src="Ice3.webp" alt="Peanot Choklad Cup">
+            <h3>Peanot Choklad Cup</h3>
+            <p>Price:  ₱60</p>
+            <button onclick="showOrderForm('Peanot Choklad Cup')">Order Now</button>
+        </div>
+        <div class="card">
+            <img src="Ice4.webp" alt="Coffee Choklad Chip">
+            <h3>Coffee Choklad Chip</h3>
+            <p>Price: ₱60</p>
+            <button onclick="showOrderForm('Coffee Choklad Chip')">Order Now</button>
+        </div>
+        <div class="card">
+            <img src="Ice5.webp" alt="Rocky Fjord">
+            <h3>Rocky Fjord</h3>
+            <p>Price: ₱60</p>
+            <button onclick="showOrderForm('Rocky Fjord')">Order Now</button>
+        </div>
+        <div class="card">
+            <img src="Ice6.webp" alt="Cherry Choka-Flaka">
+            <h3>Cherry Choka-Flaka</h3>
+            <p>Price: ₱60</p>
+            <button onclick="showOrderForm('Cherry Choka-Flaka')">Order Now</button>
+        </div>
+        <div class="card">
+            <img src="Ice7.avif" alt="Kookies and Kram">
+            <h3>Kookies and Kram</h3>
+            <p>Price: ₱60</p>
+            <button onclick="showOrderForm('Kookies and Kram')">Order Now</button>
+        </div>
+        <div class="card">
+            <img src="Ice8.webp" alt="Butter Pekan">
+            <h3>Butter Pekan</h3>
+            <p>Price:₱60</p>
+            <button onclick="showOrderForm('Butter Pekan')">Order Now</button>
+        </div>
+    </section>
+
+    <script>
+        // Function to handle the "Order Now" button
+        function showOrderForm(flavor) {
+            const popup = document.getElementById('popup'); // Selects the popup element
+            popup.innerText = `Thank you for ordering ${flavor}!`; // Updates the popup text with the flavor name
+            popup.style.display = 'block'; // Makes the popup visible
+
+            // Hides the popup after 3 seconds
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
